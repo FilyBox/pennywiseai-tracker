@@ -1,5 +1,6 @@
 package com.pennywiseai.parser.core.bank
 
+import com.pennywiseai.parser.core.ParsedTransaction
 import com.pennywiseai.parser.core.TransactionType
 import java.math.BigDecimal
 import java.text.Normalizer
@@ -20,6 +21,26 @@ import java.text.Normalizer
 abstract class BaseMexicanBankParser : BankParser() {
 
     override fun getCurrency() = "MXN"
+
+    /**
+     * Overrides the base parse to also extract available limit for EXPENSE-type
+     * card transactions. Mexican banks include "Limite disponible" for credit card
+     * charges that use EXPENSE type (not CREDIT type like Indian banks).
+     */
+    override fun parse(smsBody: String, sender: String, timestamp: Long): ParsedTransaction? {
+        val result = super.parse(smsBody, sender, timestamp) ?: return null
+
+        // If the base parse didn't extract a credit limit but this is a card transaction,
+        // try to extract it now (base only extracts for CREDIT type)
+        if (result.creditLimit == null && result.isFromCard) {
+            val limit = extractAvailableLimit(smsBody)
+            if (limit != null) {
+                return result.copy(creditLimit = limit)
+            }
+        }
+
+        return result
+    }
 
     /**
      * Strips diacritical marks from Spanish text so keyword matching works
@@ -146,6 +167,27 @@ abstract class BaseMexicanBankParser : BankParser() {
         }
 
         return null
+    }
+
+    /**
+     * Extracts the available credit limit from Mexican banking SMS.
+     * Handles patterns like "Limite disponible $X,XXX.XX" and "Limite disp. $X,XXX.XX".
+     */
+    override fun extractAvailableLimit(message: String): BigDecimal? {
+        val limitPatterns = listOf(
+            // "Limite disponible $X,XXX.XX"
+            Regex("""[Ll]imite\s+disponible\s+\$\s?([0-9,]+(?:\.\d{1,2})?)""", RegexOption.IGNORE_CASE),
+            // "Limite disp. $X,XXX.XX"
+            Regex("""[Ll]imite\s+disp\.?\s+\$\s?([0-9,]+(?:\.\d{1,2})?)""", RegexOption.IGNORE_CASE)
+        )
+
+        for (pattern in limitPatterns) {
+            pattern.find(message)?.let { match ->
+                return parseMexicanAmount(match.groupValues[1])
+            }
+        }
+
+        return super.extractAvailableLimit(message)
     }
 
     /**
