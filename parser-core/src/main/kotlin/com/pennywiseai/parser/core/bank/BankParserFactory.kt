@@ -98,7 +98,8 @@ object BankParserFactory {
         MBankCZParser(),  // mBank CZ (Czech Republic)
         BBVAMexicoParser(),  // BBVA México (Mexico)
         BanorteBankParser(),  // Banorte (Mexico)
-        CitibanamexParser()  // Citibanamex (Mexico)
+        CitibanamexParser(),  // Citibanamex (Mexico)
+        SantanderMexicoParser()  // Santander México (Mexico)
         // Add more bank parsers here as we implement them
     )
 
