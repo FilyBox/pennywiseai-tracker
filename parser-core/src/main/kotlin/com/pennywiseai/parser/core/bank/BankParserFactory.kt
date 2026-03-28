@@ -99,7 +99,8 @@ object BankParserFactory {
         BBVAMexicoParser(),  // BBVA México (Mexico)
         BanorteBankParser(),  // Banorte (Mexico)
         CitibanamexParser(),  // Citibanamex (Mexico)
-        SantanderMexicoParser()  // Santander México (Mexico)
+        SantanderMexicoParser(),  // Santander México (Mexico)
+        MercadoPagoParser()  // Mercado Pago (Latin America)
         // Add more bank parsers here as we implement them
     )
 
