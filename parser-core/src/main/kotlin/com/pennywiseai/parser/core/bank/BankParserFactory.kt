@@ -97,7 +97,11 @@ object BankParserFactory {
         AlRajhiBankParser(),  // Al Rajhi Bank (Saudi Arabia)
         MBankCZParser(),  // mBank CZ (Czech Republic)
         BBVAMexicoParser(),  // BBVA México (Mexico)
-        BanorteBankParser()  // Banorte (Mexico)
+        BanorteBankParser(),  // Banorte (Mexico)
+        CitibanamexParser(),  // Citibanamex (Mexico)
+        SantanderMexicoParser(),  // Santander México (Mexico)
+        MercadoPagoParser(),  // Mercado Pago (Latin America)
+        GoogleWalletParser()  // Google Wallet / Google Pay (USA)
         // Add more bank parsers here as we implement them
     )
 
