@@ -101,8 +101,9 @@ object BankParserFactory {
         CitibanamexParser(),  // Citibanamex (Mexico)
         SantanderMexicoParser(),  // Santander México (Mexico)
         MercadoPagoParser(),  // Mercado Pago (Latin America)
-        GoogleWalletParser()  // Google Wallet / Google Pay (USA)
-        // Add more bank parsers here as we implement them
+        GoogleWalletParser(),  // Google Wallet / Google Pay (USA)
+        // GenericTransactionParser MUST be last - it is the catch-all fallback
+        GenericTransactionParser()  // Generic fallback for unknown senders
     )
 
     /**
