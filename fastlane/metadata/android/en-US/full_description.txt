@@ -6,11 +6,11 @@ Key Features:
 - 100% On-Device & Private — All AI processing runs locally, no cloud, no servers, no tracking
 - Zero Setup — Just grant SMS permission, no accounts to create, works instantly
 - Free & Open Source — AGPL v3 licensed, no ads, no hidden costs
-- On-Device AI Assistant — Ask "What did I spend on food?" — powered by Qwen 2.5, runs entirely on your phone
+- On-Device AI Assistant — Ask "What did I spend on food?" — powered by Qwen 3.5 2B, runs entirely on your phone
 - 90+ Banks Supported across 18 countries with multi-currency capabilities
 - Smart Analytics — Monthly trends, category breakdowns, spending patterns
 - Budget Tracking — Set budgets per category and track progress
 - Subscription Detection — Automatically identifies recurring payments
 - Smart Rules — Auto-categorize transactions with customizable rules
 
-All AI processing happens on your device using Qwen 2.5 — no cloud, no API calls, no data leaving your phone.
+All AI processing happens on your device using Qwen 3.5 2B — no cloud, no API calls, no data leaving your phone.

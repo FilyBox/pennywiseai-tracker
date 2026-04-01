@@ -68,13 +68,16 @@ object Constants {
     
     /**
      * LLM Model Configuration
+     * Model: Qwen 3.5 2B (https://huggingface.co/Qwen/Qwen3.5-2B)
+     * Quantized to 8-bit for on-device inference via LiteRT-LM.
      */
     object ModelDownload {
-        const val MODEL_URL = "https://pub-fcfb3ffddb184540a758a7fe68249908.r2.dev/Qwen2.5-1.5B-Instruct-q8-ekv4096.litertlm"
-        const val MODEL_FILE_NAME = "Qwen2.5-1.5B-Instruct-q8-ekv4096.litertlm"
-        const val MODEL_SIZE_MB = 1524L
-        const val MODEL_SIZE_BYTES = 1_597_931_520L
-        const val REQUIRED_SPACE_BYTES = 3_195_863_040L // ~3.0GB (2x model size for safety)
+        const val MODEL_URL = "https://pub-fcfb3ffddb184540a758a7fe68249908.r2.dev/Qwen3.5-2B-Instruct-q8-ekv4096.litertlm"
+        const val MODEL_FILE_NAME = "Qwen3.5-2B-Instruct-q8-ekv4096.litertlm"
+        const val MODEL_SIZE_MB = 2048L
+        const val MODEL_SIZE_BYTES = 2_147_483_648L
+        const val REQUIRED_SPACE_BYTES = 4_294_967_296L // ~4.0GB (2x model size for safety)
+        const val MODEL_DISPLAY_NAME = "Qwen 3.5 2B"
     }
 
     /**

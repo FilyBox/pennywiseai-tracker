@@ -52,7 +52,7 @@ Your bank already texts you every transaction — PennyWise turns those SMS into
 
 - **🤖 Smart SMS Parsing** — 85+ banks across 14 countries with real-time detection of incoming SMS
 - **🌍 Multi-Currency** — Native support for INR, USD, AED, THB, NPR, ETB, and more with exchange rate management
-- **💬 On-Device AI Assistant** — Ask "What did I spend on food?" — powered by Qwen 2.5, runs entirely on your phone
+- **💬 On-Device AI Assistant** — Ask "What did I spend on food?" — powered by Qwen 3.5 2B, runs entirely on your phone
 - **🏷️ Auto-Categorization & Smart Rules** — Pattern-based rules that auto-categorize transactions
 - **💰 Budget Tracking** — Multiple budget groups (Limit/Target/Expected types), daily allowance, category-level budgets
 - **📊 Analytics & Charts** — Bar charts, line trends, heatmaps, category breakdowns, top merchants, custom date ranges
@@ -145,7 +145,7 @@ More banks being added regularly! [Request your bank →](https://github.com/sar
 
 ## Privacy First
 
-All AI processing happens on your device using MediaPipe's Qwen 2.5 model — no cloud, no API calls, no data leaving your phone. There are no accounts to create, no sign-ups, no servers collecting your data. Your SMS and financial information stay entirely on your device. The entire codebase is open source (AGPL v3) so anyone can verify exactly what the app does.
+All AI processing happens on your device using Qwen 3.5 2B via LiteRT-LM — no cloud, no API calls, no data leaving your phone. There are no accounts to create, no sign-ups, no servers collecting your data. Your SMS and financial information stay entirely on your device. The entire codebase is open source (AGPL v3) so anyone can verify exactly what the app does.
 
 ## Screenshots
 
