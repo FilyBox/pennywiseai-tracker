@@ -320,19 +320,19 @@ class GenericTransactionParser : BankParser() {
          */
         private val MERCHANT_PATTERNS = listOf(
             // "at MERCHANT" (English)
-            Regex("""\bat\s+([^\.\n]+?)(?:\s+on\s+|\s+Ref|\s+UPI|\.\s|$)""", RegexOption.IGNORE_CASE),
+            Regex("""\bat\s+([^.\n]+?)(?:\s+on\s+|\s+Ref|\s+UPI|\.\s|$)""", RegexOption.IGNORE_CASE),
             // "to MERCHANT" (English)
-            Regex("""\bto\s+([^\.\n]+?)(?:\s+on\s+|\s+Ref|\s+UPI|\.\s|$)""", RegexOption.IGNORE_CASE),
+            Regex("""\bto\s+([^.\n]+?)(?:\s+on\s+|\s+Ref|\s+UPI|\.\s|$)""", RegexOption.IGNORE_CASE),
             // "from MERCHANT" (English)
-            Regex("""\bfrom\s+([^\.\n]+?)(?:\s+on\s+|\s+Ref|\s+UPI|\.\s|$)""", RegexOption.IGNORE_CASE),
+            Regex("""\bfrom\s+([^.\n]+?)(?:\s+on\s+|\s+Ref|\s+UPI|\.\s|$)""", RegexOption.IGNORE_CASE),
             // "en MERCHANT" (Spanish - at/in)
-            Regex("""\ben\s+([^\.\n]+?)(?:\s+\d{2}/|\s+Saldo|\s+Limite|$)""", RegexOption.IGNORE_CASE),
+            Regex("""\ben\s+([^.\n]+?)(?:\s+\d{2}/|\s+Saldo|\s+Limite|$)""", RegexOption.IGNORE_CASE),
             // "a MERCHANT" (Spanish - to) after payment keyword
-            Regex("""(?:pagaste|transferiste|pago)\s+.+?\s+a\s+([^\.\n]+?)(?:\.\s|$)""", RegexOption.IGNORE_CASE),
+            Regex("""(?:pagaste|transferiste|pago)\s+.+?\s+a\s+([^.\n]+?)(?:\.\s|$)""", RegexOption.IGNORE_CASE),
             // "for MERCHANT" (subscription/service)
-            Regex("""\bfor\s+([^\.\n]+?)(?:\s+on|\s+at|\s+Ref|\.\s|$)""", RegexOption.IGNORE_CASE),
+            Regex("""\bfor\s+([^.\n]+?)(?:\s+on|\s+at|\s+Ref|\.\s|$)""", RegexOption.IGNORE_CASE),
             // Subscription names: "subscription to MERCHANT"
-            Regex("""subscription\s+to\s+([^\.\n]+?)(?:\s+\$|\s+has|\.\s|$)""", RegexOption.IGNORE_CASE)
+            Regex("""subscription\s+to\s+([^.\n]+?)(?:\s+\$|\s+has|\.\s|$)""", RegexOption.IGNORE_CASE)
         )
 
         /**
@@ -365,6 +365,9 @@ class GenericTransactionParser : BankParser() {
 
         /**
          * Currency detection patterns mapped to ISO codes.
+         * Ordered from most specific to least specific.
+         * The bare `$` symbol defaults to USD as a fallback; specific
+         * currency-prefixed patterns (MXN, ARS, COP, BRL) are checked first.
          */
         private val CURRENCY_PATTERNS = listOf(
             Regex("""(?:Rs\.?|₹|INR)""", RegexOption.IGNORE_CASE) to "INR",
